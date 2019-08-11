@@ -5,10 +5,33 @@
 <body>
 <h1 th:text="${title}">Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
-
+<h2>Enter your new cheese:</h2>
 <form method="post">
-    <input type="text" name="cheeseName" />
-    <input type="submit" value="Add Cheese" />
+    <table>
+        <tr>
+            <td>
+                <label for="cheeseName">Name of Cheese:</label>
+            </td>
+            <td>
+                <input type="text" name="cheeseName" id="cheeseName" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="cheeseDescription">Description of Cheese:</label>
+            </td>
+            <td>
+                <input type="text" name="cheeseDescription" id="cheeseDescription"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Add Cheese" />
+            </td>
+        </tr>
+    </table>
+
+
 </form>
 
 </body>

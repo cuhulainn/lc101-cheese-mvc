@@ -5,12 +5,16 @@
 <body>
     <h1 th:text="${title}">Default Title</h1>
     <nav th:replace="fragments :: navigation"></nav>
+
+    <h2>List of Cheeses:</h2>
+
     <p th:unless="${cheeses} and ${cheeses.size()}">i don't has cheez :(</p>
 
     <ul>
-        <li th:each="cheese : ${cheeses}" th:text="${cheese}"></li>
+        <li th:each="cheese : ${cheeses}" th:text="${cheese.key} + ': ' + ${cheese.value}"></li>
     </ul>
-
+    <br><br><br><br>
+    <hr>
     <h1>Lucca and Maya's Cheese</h1>
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7Qae-pD98H0aZbQgFKkmFizdj-mJIDxEBoKAsU8L_6uPbFixIyw"/>
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIz5Hk7SKvlYp5DP5oytNhNWINZDpju59t4zZK1tGm-fB6Ecwx"/>
