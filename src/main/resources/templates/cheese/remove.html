@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+</head>
+<body>
+    <h1 th:text="${title}">Default Title</h1>
+    <nav th:replace="fragments :: navigation"></nav>
+    <h2>Choose the cheeses to remove:</h2>
+    <form method="post">
+        <table>
+            <tr th:each="cheese : ${cheeses}">
+                <td><input type="checkbox" name="cheese" th:value="${cheese.key}" th:id="${cheese.key}"/></td>
+                <td><label th:for="${cheese.key}" th:text="${cheese.key}"></label></td>
+            </tr>
+        </table>
+        <input type="submit" value="Remove cheese(s)" />
+    </form>
+</body>
+</html>
