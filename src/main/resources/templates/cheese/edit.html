@@ -10,17 +10,32 @@
 
 <h2 th:text="'Edit Cheese ' + ${cheese.name} + '(id=' + ${cheese.cheeseId} + ')'"></h2>
 
-<form method="post" action="/cheese/edit" style="max-width:600px;">
+<form method="post" action="/cheese/edit" style="max-width:600px;" th:object="${cheese}">
 
     <div class="form-group">
-        <label for="cheeseName">Name of Cheese:</label>
-        <input class="form-control" type="text" name="name" id="cheeseName" th:value="${cheese.name}" />
+        <label th:for="name">Name of Cheese:</label>
+        <input class="form-control" th:field="*{name}" th:value="name" />
+        <span th:errors="*{name}" class="error"></span>
     </div>
     <div class="form-group">
-        <label for="cheeseDescription">Description of Cheese:</label>
-        <input class="form-control" type="text" name="description" id="cheeseDescription" th:value="${cheese.description}"/>
+        <label th:for="description">Description of Cheese:</label>
+        <input class="form-control" th:field="*{description}" th:value="description"/>
+        <span th:errors="*{description}" class="error"></span>
     </div>
-    <input type="hidden" th:value="${cheese.cheeseId}" name="cheeseId" />
+    <div class="form-group">
+        <label th:for="type">Type</label>
+        <select th:field="*{type}">
+            <option th:each="cheeseType : ${cheeseTypes}"
+                    th:text="${cheeseType.name}"
+                    th:value="${cheeseType}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="cheeseRating">Rating (1-5)</label>
+        <input class="form-control" th:field="*{cheeseRating}" />
+        <span th:errors="*{cheeseRating}" class="error"></span>
+    </div>
+    <input type="hidden" th:value="*{cheeseId}" th:field="*{cheeseId}" />
     <input type="submit" value="Edit Cheese" />
 </form>
 

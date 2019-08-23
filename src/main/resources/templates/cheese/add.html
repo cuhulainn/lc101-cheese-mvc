@@ -10,16 +10,33 @@
 
     <h2>Enter your new cheese:</h2>
 
-    <form method="post" style="max-width:600px;">
+<!--    the th:object below means that the form will be dedicated to working with this object only,
+and required that we pass in an empty object of the correct type to the view via the model -->
+    <form method="post" style="max-width:600px;" th:object="${cheese}">
 
 <!--        The name in this input field corresponds to the fields in the Cheese for ModelAttributes to work -->
         <div class="form-group">
-            <label for="cheeseName">Name of Cheese:</label>
-            <input class="form-control" type="text" name="name" id="cheeseName" />
+            <label th:for="name">Name of Cheese:</label>
+            <input class="form-control" th:field="*{name}" />
+            <span th:errors="*{name}" class="error"></span>
         </div>
         <div class="form-group">
-            <label for="cheeseDescription">Description of Cheese:</label>
-            <input class="form-control" type="text" name="description" id="cheeseDescription"/>
+            <label th:for="description">Description of Cheese:</label>
+            <input class="form-control" th:field="*{description}" />
+            <span th:errors="*{description}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label th:for="type">Type</label>
+            <select th:field="*{type}">
+                <option th:each="cheeseType : ${cheeseTypes}"
+                        th:text="${cheeseType.name}"
+                        th:value="${cheeseType}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label th:for="cheeseRating">Rating (1-5)</label>
+            <input class="form-control" th:field="*{cheeseRating}" />
+            <span th:errors="*{cheeseRating}" class="error"></span>
         </div>
         <input type="submit" value="Add Cheese" />
     </form>
