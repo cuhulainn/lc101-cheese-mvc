@@ -9,8 +9,8 @@
     <form method="post">
         <table>
             <tr th:each="cheese : ${cheeses}">
-                <td><input type="checkbox" name="cheese" th:value="${cheese.key}" th:id="${cheese.key}"/></td>
-                <td><label th:for="${cheese.key}" th:text="${cheese.key}"></label></td>
+                <td><input type="checkbox" name="cheeseNameRemovalArrayList" th:value="${cheese.name}" th:id="${cheese.name}"/></td>
+                <td><label th:for="${cheese.name}" th:text="${cheese.name}"></label></td>
             </tr>
         </table>
         <input type="submit" value="Remove cheese(s)" />
