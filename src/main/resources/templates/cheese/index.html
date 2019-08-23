@@ -1,22 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: head">
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
 <body class="container">
-    <h1 th:text="${title}">Default Title</h1>
-    <nav th:replace="fragments :: navigation"></nav>
 
-    <h2>List of Cheeses:</h2>
+<h1 th:text="${title}">Default Title</h1>
 
-    <p th:unless="${cheeses} and ${cheeses.size()}">i don't has cheez :(</p>
+<nav th:replace="fragments :: navigation"></nav>
 
-    <ul>
-        <li th:each="cheese : ${cheeses}" th:text="${cheese.name} + ': ' + ${cheese.description}"></li>
-    </ul>
-    <br><br><br><br>
-    <hr>
-    <h1>Lucca and Maya's Cheese</h1>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7Qae-pD98H0aZbQgFKkmFizdj-mJIDxEBoKAsU8L_6uPbFixIyw"/>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIz5Hk7SKvlYp5DP5oytNhNWINZDpju59t4zZK1tGm-fB6Ecwx"/>
+<p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>
+
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+
+    <tr th:each="cheese : ${cheeses}">
+        <td th:text="${cheese.name}"></td>
+        <td th:text="${cheese.description}"></td>
+    </tr>
+
+
+</table>
+
+<h1>Lucca and Maya's Cheese</h1>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7Qae-pD98H0aZbQgFKkmFizdj-mJIDxEBoKAsU8L_6uPbFixIyw"/>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIz5Hk7SKvlYp5DP5oytNhNWINZDpju59t4zZK1tGm-fB6Ecwx"/>
+
+
 </body>
 </html>
